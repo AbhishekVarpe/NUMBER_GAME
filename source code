@@ -1,0 +1,39 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class RandomNumberGuessingGame 
+ {
+    public static void main(String[] args) 
+     {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        
+        int lowerBound = 1;
+        int upperBound = 100;
+        
+        int generatedNumber = random.nextInt(upperBound - lowerBound + 1) + lowerBound;
+        
+        System.out.println("Welcome to the Random Number Guessing Game!");
+        System.out.println("I have generated a random number between " + lowerBound + " and " + upperBound + ". Try to guess it!");
+        
+        int userGuess;
+        int attempts = 0;
+        
+        do {
+            System.out.print("Enter your guess: ");
+            userGuess = scanner.nextInt();
+            attempts++;
+            
+            if (userGuess < generatedNumber) {
+                System.out.println("Try a higher number.");
+            } else if (userGuess > generatedNumber) {
+                System.out.println("Try a lower number.");
+            } else {
+                System.out.println("Congratulations! You guessed the number " + generatedNumber + " correctly in " + attempts + " attempts.");
+                break;
+            }
+        } while (true);
+        
+        scanner.close();
+    }
+}
